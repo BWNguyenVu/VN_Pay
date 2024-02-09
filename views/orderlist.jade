@@ -1,4 +1,31 @@
 extends layout
 
 block content
-    h1= title
+  doctype html
+  html
+    head
+      title= title
+      link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", crossorigin="anonymous")
+    body
+      div.container
+        h1.text-center= title
+        table.table.table-striped.table-bordered
+          thead
+            tr
+              th Mã
+              th Số tiền
+              th Ngân hàng
+              th Nội dung
+              th Ngày tạo
+              th Tình trạng
+              th IpAddr
+          tbody
+            each transaction in transactions
+              tr
+                td #{transaction.orderId}
+                td #{transaction.amount}
+                td #{transaction.bankCode}
+                td #{transaction.vnpOrderInfo}
+                td #{transaction.createDate}
+                td #{transaction.transactionStatus}
+                td #{transaction.ipAddr}
